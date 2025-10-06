@@ -1,6 +1,7 @@
 'use client';
 
 import { DollarSign, Bot, ArrowRight, Check } from 'lucide-react';
+import { getProductUrls } from '@/lib/config';
 
 const products = [
   {
@@ -18,6 +19,7 @@ const products = [
     color: 'from-green-500 to-emerald-600',
     bgColor: 'bg-green-50',
     textColor: 'text-green-700',
+    urlKey: 'admin' as const,
   },
   {
     icon: Bot,
@@ -34,10 +36,13 @@ const products = [
     color: 'from-blue-500 to-purple-600',
     bgColor: 'bg-blue-50',
     textColor: 'text-blue-700',
+    urlKey: 'chat' as const,
   },
 ];
 
 export default function ProductsSection() {
+  const urls = getProductUrls();
+
   return (
     <section id="productos" className="section-container bg-white">
       <div className="text-center mb-16">

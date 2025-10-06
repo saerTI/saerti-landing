@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { UserButton } from '@clerk/nextjs';
 import { Sparkles, TrendingUp, Bot, ExternalLink, Zap } from 'lucide-react';
 import Link from 'next/link';
+import { getProductUrls } from '@/lib/config';
 
 export default async function DashboardPage() {
   const user = await currentUser();
@@ -10,6 +11,9 @@ export default async function DashboardPage() {
   if (!user) {
     redirect('/sign-in');
   }
+
+  // Obtener URLs dinámicas
+  const urls = getProductUrls();
 
   // Obtener metadata del usuario
   const aiQueriesRemaining = (user.privateMetadata?.aiQueriesRemaining as number) || 50;
@@ -117,18 +121,28 @@ export default async function DashboardPage() {
               Acciones Rápidas
             </h3>
             <div className="space-y-3">
-              <button className="w-full flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-left">
+              <a 
+                href={urls.chat}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-left"
+              >
                 <Bot size={20} className="text-blue-600" />
                 <span className="text-sm font-medium text-gray-900">
                   Nueva Consulta IA
                 </span>
-              </button>
-              <button className="w-full flex items-center gap-3 px-4 py-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors text-left">
+              </a>
+              <a 
+                href={urls.admin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center gap-3 px-4 py-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors text-left"
+              >
                 <TrendingUp size={20} className="text-green-600" />
                 <span className="text-sm font-medium text-gray-900">
                   Ver Flujo de Caja
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -151,7 +165,7 @@ export default async function DashboardPage() {
                 <li>✓ Reportes en tiempo real</li>
               </ul>
               <a
-                href="https://admin.saerti.cl"
+                href={urls.admin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full btn-primary flex items-center justify-center gap-2"
@@ -178,7 +192,7 @@ export default async function DashboardPage() {
                 <li>✓ Disponible 24/7</li>
               </ul>
               <a
-                href="https://chat.saerti.cl"
+                href={urls.chat}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full btn-primary flex items-center justify-center gap-2"

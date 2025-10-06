@@ -94,6 +94,19 @@ export default function BetaForm() {
           Revisa tu bandeja de entrada.
         </p>
         {!user && (
+          <p className="text-sm text-gray-500">Redirigiendo al registro...</p>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <section id="beta" className="section-container bg-gradient-to-br from-blue-50 to-purple-50">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            Únete al Programa Beta
+          </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Acceso gratuito a todas las funciones. Sin tarjeta de crédito. 
             Ayúdanos a mejorar y recibe beneficios exclusivos.
@@ -258,17 +271,4 @@ export default function BetaForm() {
       </div>
     </section>
   );
-}"text-sm text-gray-500">Redirigiendo al registro...</p>
-        )}
-      </div>
-    );
-  }
-
-  return (
-    <section id="beta" className="section-container bg-gradient-to-br from-blue-50 to-purple-50">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Únete al Programa Beta
-          </h2>
-          <p className
+}
