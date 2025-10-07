@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Linkedin, Twitter, Mail } from 'lucide-react';
+import Logo from './logo';  // ← Importar Logo
 
 export default function Footer() {
   return (
@@ -8,11 +9,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
-              </div>
-              <span className="text-xl font-bold text-white">saerTI</span>
+            {/* ← Reemplazar el div con Logo */}
+            <div className="mb-4">
+              <Logo size="md" showText href="/" textColor="light" />
             </div>
             <p className="text-gray-400 mb-4 max-w-md">
               Software de gestión empresarial inteligente. 

@@ -4,6 +4,7 @@ import { UserButton } from '@clerk/nextjs';
 import { Sparkles, TrendingUp, Bot, ExternalLink, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { getProductUrls } from '@/lib/config';
+import Logo from '@/components/logo';
 
 export default async function DashboardPage() {
   const user = await currentUser();
@@ -31,17 +32,13 @@ export default async function DashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">saerTI</h1>
-                {betaAccess && (
-                  <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">
-                    Beta Tester
-                  </span>
-                )}
-              </div>
+              {/* ← Reemplazar el div con Logo */}
+              <Logo size="md" showText />
+              {betaAccess && (
+                <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">
+                  Beta Tester
+                </span>
+              )}
             </div>
             <UserButton afterSignOutUrl="/" />
           </div>

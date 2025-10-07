@@ -1,3 +1,4 @@
+// app/page.tsx
 import Navigation from '@/components/navigation';
 import HeroSection from '@/components/hero-section';
 import ProductsSection from '@/components/products-section';

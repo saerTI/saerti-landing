@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Loader2, CheckCircle, Building2, Users, Mail, Phone } from 'lucide-react';
-import { useUser } from '@clerk/nextjs';
+import { Loader2, CheckCircle, Building2, Users, Mail, Phone, ArrowRight } from 'lucide-react';
+import { useUser, SignedIn, SignedOut } from '@clerk/nextjs';
+import Link from 'next/link';
 
 const betaFormSchema = z.object({
   fullName: z.string().min(3, 'Nombre debe tener al menos 3 caracteres'),
@@ -101,174 +102,201 @@ export default function BetaForm() {
   }
 
   return (
-    <section id="beta" className="section-container bg-gradient-to-br from-blue-50 to-purple-50">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Únete al Programa Beta
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Acceso gratuito a todas las funciones. Sin tarjeta de crédito. 
-            Ayúdanos a mejorar y recibe beneficios exclusivos.
-          </p>
-        </div>
-
-        <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-12">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {/* Nombre Completo */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Nombre Completo *
-              </label>
-              <input
-                {...register('fullName')}
-                type="text"
-                placeholder="Juan Pérez"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-              />
-              {errors.fullName && (
-                <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>
-              )}
+    <>
+      {/* SI NO ESTÁ LOGEADO - Mostrar formulario */}
+      <SignedOut>
+        <section id="beta" className="section-container bg-gradient-to-br from-blue-50 to-purple-50">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+                Únete al Programa Beta
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Acceso gratuito a todas las funciones. Sin tarjeta de crédito. 
+                Ayúdanos a mejorar y recibe beneficios exclusivos.
+              </p>
             </div>
 
-            {/* Email y Teléfono en grid */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <Mail size={16} className="inline mr-1" />
-                  Email *
-                </label>
-                <input
-                  {...register('email')}
-                  type="email"
-                  placeholder="juan@empresa.cl"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-                )}
-              </div>
+            <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-12">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                {/* ... resto del formulario sin cambios ... */}
+                {/* Nombre Completo */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Nombre Completo *
+                  </label>
+                  <input
+                    {...register('fullName')}
+                    type="text"
+                    placeholder="Juan Pérez"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  />
+                  {errors.fullName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>
+                  )}
+                </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <Phone size={16} className="inline mr-1" />
-                  Teléfono *
-                </label>
-                <input
-                  {...register('phone')}
-                  type="tel"
-                  placeholder="+56912345678"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                />
-                {errors.phone && (
-                  <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
-                )}
-              </div>
-            </div>
+                {/* Email y Teléfono en grid */}
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <Mail size={16} className="inline mr-1" />
+                      Email *
+                    </label>
+                    <input
+                      {...register('email')}
+                      type="email"
+                      placeholder="juan@empresa.cl"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                    )}
+                  </div>
 
-            {/* Nombre de Empresa */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                <Building2 size={16} className="inline mr-1" />
-                Nombre de tu Empresa *
-              </label>
-              <input
-                {...register('companyName')}
-                type="text"
-                placeholder="Mi Empresa SpA"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-              />
-              {errors.companyName && (
-                <p className="text-red-500 text-sm mt-1">{errors.companyName.message}</p>
-              )}
-            </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <Phone size={16} className="inline mr-1" />
+                      Teléfono *
+                    </label>
+                    <input
+                      {...register('phone')}
+                      type="tel"
+                      placeholder="+56912345678"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    />
+                    {errors.phone && (
+                      <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
+                    )}
+                  </div>
+                </div>
 
-            {/* Industria y Tamaño en grid */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Industria *
-                </label>
-                <select
-                  {...register('industryType')}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                {/* Nombre de Empresa */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <Building2 size={16} className="inline mr-1" />
+                    Nombre de tu Empresa *
+                  </label>
+                  <input
+                    {...register('companyName')}
+                    type="text"
+                    placeholder="Mi Empresa SpA"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  />
+                  {errors.companyName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.companyName.message}</p>
+                  )}
+                </div>
+
+                {/* Industria y Tamaño en grid */}
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Industria *
+                    </label>
+                    <select
+                      {...register('industryType')}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    >
+                      <option value="">Selecciona...</option>
+                      {industries.map((industry) => (
+                        <option key={industry} value={industry}>
+                          {industry}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.industryType && (
+                      <p className="text-red-500 text-sm mt-1">{errors.industryType.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <Users size={16} className="inline mr-1" />
+                      Tamaño *
+                    </label>
+                    <select
+                      {...register('companySize')}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    >
+                      <option value="">Selecciona...</option>
+                      {companySizes.map((size) => (
+                        <option key={size} value={size}>
+                          {size}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.companySize && (
+                      <p className="text-red-500 text-sm mt-1">{errors.companySize.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Principal Desafío */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    ¿Cuál es tu principal desafío en la gestión del negocio? *
+                  </label>
+                  <textarea
+                    {...register('mainChallenge')}
+                    rows={4}
+                    placeholder="Ej: Llevo el flujo de caja en Excel y siempre olvido registrar gastos..."
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                  />
+                  {errors.mainChallenge && (
+                    <p className="text-red-500 text-sm mt-1">{errors.mainChallenge.message}</p>
+                  )}
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  <option value="">Selecciona...</option>
-                  {industries.map((industry) => (
-                    <option key={industry} value={industry}>
-                      {industry}
-                    </option>
-                  ))}
-                </select>
-                {errors.industryType && (
-                  <p className="text-red-500 text-sm mt-1">{errors.industryType.message}</p>
-                )}
-              </div>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle size={20} />
+                      Solicitar Acceso Beta
+                    </>
+                  )}
+                </button>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <Users size={16} className="inline mr-1" />
-                  Tamaño *
-                </label>
-                <select
-                  {...register('companySize')}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                >
-                  <option value="">Selecciona...</option>
-                  {companySizes.map((size) => (
-                    <option key={size} value={size}>
-                      {size}
-                    </option>
-                  ))}
-                </select>
-                {errors.companySize && (
-                  <p className="text-red-500 text-sm mt-1">{errors.companySize.message}</p>
-                )}
-              </div>
+                <p className="text-center text-sm text-gray-500">
+                  Al enviar, aceptas recibir comunicaciones sobre el programa beta.
+                  Sin spam, prometido. 🤝
+                </p>
+              </form>
             </div>
+          </div>
+        </section>
+      </SignedOut>
 
-            {/* Principal Desafío */}
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
-                ¿Cuál es tu principal desafío en la gestión del negocio? *
-              </label>
-              <textarea
-                {...register('mainChallenge')}
-                rows={4}
-                placeholder="Ej: Llevo el flujo de caja en Excel y siempre olvido registrar gastos..."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-              />
-              {errors.mainChallenge && (
-                <p className="text-red-500 text-sm mt-1">{errors.mainChallenge.message}</p>
-              )}
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 size={20} className="animate-spin" />
-                  Enviando...
-                </>
-              ) : (
-                <>
-                  <CheckCircle size={20} />
-                  Solicitar Acceso Beta
-                </>
-              )}
-            </button>
-
-            <p className="text-center text-sm text-gray-500">
-              Al enviar, aceptas recibir comunicaciones sobre el programa beta.
-              Sin spam, prometido. 🤝
+      {/* SI YA ESTÁ LOGEADO - Mostrar link al dashboard */}
+      <SignedIn>
+        <section id="beta" className="section-container bg-gradient-to-br from-blue-600 to-purple-600">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+              ¡Ya eres parte del Beta! 🎉
+            </h2>
+            <p className="text-xl text-blue-100 mb-8">
+              Accede a tu dashboard para comenzar a usar todas las funciones.
             </p>
-          </form>
-        </div>
-      </div>
-    </section>
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all shadow-xl"
+            >
+              Ir al Dashboard
+              <ArrowRight className="ml-2" size={20} />
+            </Link>
+          </div>
+        </section>
+      </SignedIn>
+    </>
   );
 }

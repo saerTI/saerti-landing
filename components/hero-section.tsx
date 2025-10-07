@@ -2,6 +2,7 @@
 
 import { ArrowRight, Sparkles, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import { SignedIn, SignedOut } from '@clerk/nextjs';
 
 export default function HeroSection() {
   return (
@@ -35,23 +36,35 @@ export default function HeroSection() {
             Diseñado para emprendedores que quieren crecer.
           </p>
 
-          {/* CTAs */}
+          {/* CTAs - ACTUALIZADO */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <a 
-              href="#beta"
-              className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2 group"
-            >
-              Acceso Beta Gratis
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            
-            <Link 
-              href="/sign-up"
-              className="btn-secondary w-full sm:w-auto flex items-center justify-center gap-2"
-            >
-              <TrendingUp size={20} />
-              Ver Demo
-            </Link>
+            <SignedOut>
+              <a 
+                href="#beta"
+                className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2 group"
+              >
+                Acceso Beta Gratis
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+              
+              <Link 
+                href="/sign-up"
+                className="btn-secondary w-full sm:w-auto flex items-center justify-center gap-2"
+              >
+                <TrendingUp size={20} />
+                Ver Demo
+              </Link>
+            </SignedOut>
+
+            <SignedIn>
+              <Link 
+                href="/dashboard"
+                className="btn-primary w-full sm:w-auto flex items-center justify-center gap-2 group"
+              >
+                Ir al Dashboard
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </SignedIn>
           </div>
 
           {/* Social Proof */}
