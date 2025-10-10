@@ -1,6 +1,6 @@
-# saerTI Landing Page
+# resuelveYA Landing Page
 
-Landing page profesional para saerTI - Software de gestión empresarial con IA.
+Landing page profesional para resuelveYA - Software de gestión empresarial con IA.
 
 ## 🚀 Stack Tecnológico
 
@@ -15,8 +15,8 @@ Landing page profesional para saerTI - Software de gestión empresarial con IA.
 
 ```bash
 # Clonar repositorio
-git clone https://github.com/tu-usuario/saerti-landing.git
-cd saerti-landing
+git clone https://github.com/tu-usuario/resuelveYA-landing.git
+cd resuelveYA-landing
 
 # Instalar dependencias
 npm install
@@ -44,7 +44,7 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 ## 📁 Estructura del Proyecto
 
 ```
-saerti-landing/
+resuelveYA-landing/
 ├── app/
 │   ├── (auth)/          # Rutas de autenticación
 │   ├── (protected)/     # Rutas protegidas (dashboard)
@@ -113,7 +113,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
 3. Crea cuenta con Google o teléfono
 4. Accede al Dashboard
 5. Ve sus consultas IA disponibles (50)
-6. Accede a admin.saerti.cl o chat.saerti.cl
+6. Accede a admin.resuelveYA.cl o chat.resuelveYA.cl
 
 ## 🛠️ Comandos Útiles
 
@@ -137,14 +137,14 @@ npm run type-check
 ## 📝 Notas de Producción
 
 - Asegúrate de configurar el dominio personalizado en Vercel
-- Configura DNS de saerti.cl apuntando a Vercel
+- Configura DNS de resuelveYA.cl apuntando a Vercel
 - Habilita Analytics de Vercel para tracking
 - Configura Clerk para producción (cambiar de test a live keys)
 
 ## 🤝 Contribuir
 
-Este proyecto está en fase beta. Reporta bugs a soporte@saerti.cl
+Este proyecto está en fase beta. Reporta bugs a soporte@resuelveYA.cl
 
 ## 📄 Licencia
 
-Propietario - saerTI © 2025
+Propietario - resuelveYA © 2025

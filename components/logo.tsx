@@ -84,7 +84,7 @@ export function LogoWithImage({
     <div className={`flex items-center gap-2 ${className}`}>
       <Image
         src="/logo.png"
-        alt="saerTI"
+        alt="resuelveYA"
         width={width}
         height={height}
         priority

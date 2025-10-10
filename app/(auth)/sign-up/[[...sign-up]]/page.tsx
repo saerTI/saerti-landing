@@ -14,7 +14,7 @@ export default function SignUpPage() {
             Crea tu cuenta
           </h2>
           <p className="mt-2 text-gray-600">
-            Comienza gratis con saerTI
+            Comienza gratis con resuelveYA
           </p>
         </div>
         

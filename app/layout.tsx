@@ -7,24 +7,24 @@ import { ClerkProvider } from '@clerk/nextjs';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'saerTI - Software de Gestión Empresarial Inteligente',
+  title: 'resuelveYA - Software de Gestión Empresarial Inteligente',
   description: 'Gestiona tu empresa con flujo de caja automático y asistente IA. Hecho en Chile para emprendedores chilenos.',
-  keywords: ['flujo de caja', 'gestión empresarial', 'software chile', 'IA empresarial', 'saerTI'],
-  authors: [{ name: 'saerTI' }],
-  creator: 'saerTI',
-  publisher: 'saerTI',
-  metadataBase: new URL('https://saerti.cl'),
+  keywords: ['flujo de caja', 'gestión empresarial', 'software chile', 'IA empresarial', 'resuelveYA'],
+  authors: [{ name: 'resuelveYA' }],
+  creator: 'resuelveYA',
+  publisher: 'resuelveYA',
+  metadataBase: new URL('https://resuelveYA.cl'),
   openGraph: {
-    title: 'saerTI - Software de Gestión Empresarial',
+    title: 'resuelveYA - Software de Gestión Empresarial',
     description: 'Gestiona tu empresa con flujo de caja automático y asistente IA',
-    url: 'https://saerti.cl',
-    siteName: 'saerTI',
+    url: 'https://resuelveYA.cl',
+    siteName: 'resuelveYA',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'saerTI - Software de Gestión Empresarial',
+        alt: 'resuelveYA - Software de Gestión Empresarial',
       },
     ],
     locale: 'es_CL',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'saerTI - Software de Gestión Empresarial',
+    title: 'resuelveYA - Software de Gestión Empresarial',
     description: 'Gestiona tu empresa con flujo de caja automático y asistente IA',
     images: ['/og-image.png'],
   },

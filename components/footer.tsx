@@ -17,28 +17,12 @@ export default function Footer() {
               Software de gestión empresarial inteligente. 
               Hecho en Chile, para emprendedores chilenos.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:text-blue-400 transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="hover:text-blue-400 transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="mailto:hola@saerti.cl" className="hover:text-blue-400 transition-colors">
-                <Mail size={20} />
-              </a>
-            </div>
           </div>
 
           {/* Productos */}
           <div>
             <h3 className="text-white font-semibold mb-4">Productos</h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#productos" className="hover:text-blue-400 transition-colors">
-                  Flujo de Caja
-                </a>
-              </li>
               <li>
                 <a href="#productos" className="hover:text-blue-400 transition-colors">
                   Asistente IA
@@ -67,7 +51,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="mailto:soporte@saerti.cl" className="hover:text-blue-400 transition-colors">
+                <a href="mailto:soporte@resuelveYA.cl" className="hover:text-blue-400 transition-colors">
                   Soporte
                 </a>
               </li>
@@ -78,7 +62,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-sm text-gray-400 mb-4 sm:mb-0">
-            © {new Date().getFullYear()} saerTI. Todos los derechos reservados.
+            © {new Date().getFullYear()} resuelveYA. Todos los derechos reservados.
           </p>
           <p className="text-sm text-gray-400">
             Hecho con ❤️ en Chile 🇨🇱
