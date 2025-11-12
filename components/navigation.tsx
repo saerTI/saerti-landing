@@ -1,3 +1,4 @@
+// components/navigation.tsx (MODIFICADO)
 'use client';
 
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
@@ -13,7 +14,7 @@ export default function Navigation() {
     <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo - con espacio adecuado */}
+          {/* Logo */}
           <div className="flex-shrink-0">
             <Logo size="md" href="/" />
           </div>
@@ -28,10 +29,22 @@ export default function Navigation() {
                 Productos
               </a>
               <a 
-                href="#beta" 
+                href="#caracteristicas" 
                 className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
               >
-                Beta Gratis
+                Características
+              </a>
+              <a 
+                href="#precios" 
+                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+              >
+                Precios
+              </a>
+              <a 
+                href="#faq" 
+                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+              >
+                FAQ
               </a>
               <Link 
                 href="/sign-in" 
@@ -87,11 +100,25 @@ export default function Navigation() {
                 Productos
               </a>
               <a 
-                href="#beta" 
+                href="#caracteristicas" 
                 className="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium"
                 onClick={() => setIsOpen(false)}
               >
-                Beta Gratis
+                Características
+              </a>
+              <a 
+                href="#precios" 
+                className="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                Precios
+              </a>
+              <a 
+                href="#faq" 
+                className="block py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                onClick={() => setIsOpen(false)}
+              >
+                FAQ
               </a>
               <Link 
                 href="/sign-in" 
